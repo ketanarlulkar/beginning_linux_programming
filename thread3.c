@@ -10,10 +10,9 @@ char work_area[2048];
 
 void *thread_function(void* args)
 {
-	sem_wait(&bin_sem);
 	while(strncmp(work_area, "end", 3) != 0){
-		printf("You entered %lu characters\n",strlen(work_area) - 1);
 		sem_wait(&bin_sem);
+		printf("You entered %lu characters\n",strlen(work_area) - 1);
 	}
 	pthread_exit("Bye");
 }
